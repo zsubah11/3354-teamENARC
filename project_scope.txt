@@ -12,8 +12,7 @@
 		1.5.2.5 Add funds: via credit or debit
 	1.5.3 View existing tickets
 		1.5.3.1 Access scannable ticket (e.g. barcode or QR code)
-		1.5.3.2 Cancel tickets (user reimbursed)
-		1.5.3.3 View history/receipts: show time, price, quantity, type
+		1.5.3.2 View history/receipts: show time, price, quantity, type
 	1.5.4 View train schedule
 		1.5.4.1 View nearest stations: list view, map view
 		1.5.4.2 View route schedule
