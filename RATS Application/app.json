@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "RATS",
-    "slug": "RATS Application",
+    "slug": "RATSApplication",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [

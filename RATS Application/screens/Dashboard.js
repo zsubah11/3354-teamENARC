@@ -14,7 +14,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import { articles, Images, argonTheme } from "../constants";
 import { Card } from "../components";
 
-const { width } = Dimensions.get("screen");
+const { height,width } = Dimensions.get("screen");
 
 const thumbMeasure = (width - 48 - 32) / 3;
 const cardWidth = width - theme.SIZES.BASE * 2;
@@ -114,8 +114,8 @@ class Dashboard extends React.Component {
         <Input
           color="black"
           editable={false}
-          style={{marginHorizontal: width*0.04, width: width*0.92}}
-          placeholder="Residence Hall South"
+          style={{ marginHorizontal: width * 0.04, width: width * 0.92 }}
+          placeholder="  Riverdale"
           placeholderTextColor={'#8898AA'}
           onFocus={() => { }}
           onChangeText={(text) => { this.state.searchBoxValue = text }}
@@ -129,8 +129,8 @@ class Dashboard extends React.Component {
             borderBottomColor: argonTheme.COLORS.BORDER_COLOR,
             borderBottomWidth: 1,
           }}>
-            <Text bold color={argonTheme.COLORS.DEFAULT} size={16} style={{ alignSelf: 'center', marginBottom: theme.SIZES.BASE*4 }}>
-              Types of Passes
+            <Text bold color={argonTheme.COLORS.ACTIVE} size={18} style={{ alignSelf: 'center', marginBottom: theme.SIZES.BASE * 4 }}>
+               - Types of Passes -
             </Text>
             <ScrollView
               horizontal={true}
@@ -150,6 +150,14 @@ class Dashboard extends React.Component {
                 )}
             </ScrollView>
           </Block>
+
+          <Block style={{flex:1, flexDirection: 'row', width:width, backgroundColor:  'black'}}>
+            <Image
+              resizeMode="stretch"
+              style={{width: width, height: height*0.3}}
+              source={{ uri: "https://www.hialbarshadubai.com/wp-content/uploads/2014/03/Dubai-Metro.jpg" }}
+            />
+          </Block> 
 
           {/* Categories */}
           {/* <Block style={{ paddingHorizontal: theme.SIZES.BASE, marginVertical: theme.SIZES.BASE }}>
@@ -186,6 +194,7 @@ class Dashboard extends React.Component {
       <Block flex center>
         <ScrollView
           showsVerticalScrollIndicator={false}
+          
         >
           {this.renderCards()}
         </ScrollView>

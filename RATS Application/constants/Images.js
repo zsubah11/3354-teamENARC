@@ -10,7 +10,7 @@ const iOSLogo = require("../assets/imgs/ios.png");
 const androidLogo = require("../assets/imgs/android.png");
 // internet imgs
 
-const ProfilePicture = 'http://lestoilesheroiques.fr/wp-content/uploads/2018/03/jessicajones-saison-2-streaming-netflix.jpg';
+const ProfilePicture = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR6a4hnnKi33gDVW8m_W78NGPeH25GqIO_ebd2LCoNUms1Z_f5&s';
 
 const Viewed = [
   'https://images.unsplash.com/photo-1501601983405-7c7cabaa1581?fit=crop&w=240&q=80',

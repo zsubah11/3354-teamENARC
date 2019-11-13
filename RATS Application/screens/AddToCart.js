@@ -52,7 +52,7 @@ class AddToCart extends React.Component {
             <Block>
               <Block style={{ paddingHorizontal: theme.SIZES.BASE, marginVertical: theme.SIZES.BASE }}>
 
-                <Block style={{ marginTop: height * 0.28 }}>
+                <Block style={{ marginTop: height * 0.2 }}>
                   <AddToCartCard item={this.state.selectedArticle} full />
                 </Block>
 
@@ -72,31 +72,19 @@ class AddToCart extends React.Component {
                   </Block>
 
                   <Text size={14} style={{ alignSelf: 'flex-start', color: argonTheme.COLORS.DEFAULT }}>Subtotal: {(this.state.selectedArticle.price * this.state.numberToAdd).toFixed(2)}</Text>
-                  <Text size={14} style={{ alignSelf: 'flex-start', color: argonTheme.COLORS.DEFAULT }}>Delivery Fee: 0.25</Text>
                   <Text size={14} style={{ alignSelf: 'flex-start', color: argonTheme.COLORS.DEFAULT }}>Convinience Fee: 0.25</Text>
                   <Text size={14} style={{ alignSelf: 'flex-start', marginBottom: height * 0.02, color: argonTheme.COLORS.DEFAULT }}>Tax: {(this.state.selectedArticle.price * this.state.numberToAdd * 0.0825).toFixed(2)}</Text>
-                  <Text bold size={18} style={{ alignSelf: 'center', marginBottom: height * 0.02, color: argonTheme.COLORS.ACTIVE }}>${(this.state.selectedArticle.price * this.state.numberToAdd * 1.0825 + 0.25 + 0.25).toFixed(2)}</Text>
+                  <Text bold size={18} style={{ alignSelf: 'center', marginBottom: height * 0.02, color: argonTheme.COLORS.ACTIVE }}>${(this.state.selectedArticle.price * this.state.numberToAdd * 1.0825 + 0.25).toFixed(2)}</Text>
                 </Block>
 
                 <Button color="primary" style={styles.createButton, { width: width * 0.7, marginBottom: height*0.02 }} onPress={() => {
-                  this.props.navigation.navigate("DeliveryMap", {selectedArticle: this.state.selectedArticle, numberToAdd: this.state.numberToAdd});
+                  //this.props.navigation.navigate("DeliveryMap", {selectedArticle: this.state.selectedArticle, numberToAdd: this.state.numberToAdd});
                 }}>
                   <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                    DELIVER
+                    Buy
                                                 </Text>
                 </Button>
-
-                <Button color="primary" style={styles.createButton, { width: width * 0.7 }} onPress={() => {
-                  this.props.navigation.navigate("Cart");
-                }}>
-                  <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                    ADD TO CART
-                                                </Text>
-                </Button>
-                <Text size={14} style={{ alignSelf: 'center', marginVertical: height * 0.02, color: argonTheme.COLORS.DEFAULT }}>Items will be added to cart</Text>
-                <Text size={14} style={{ alignSelf: 'center', marginTop: height * 0.02, color: argonTheme.COLORS.DEFAULT }}>All Delivery dates are estimates that depend</Text>
-                <Text size={14} style={{ alignSelf: 'center', color: argonTheme.COLORS.DEFAULT }}>upon the availability of deliverers</Text>
-              </Block>
+                </Block>
             </Block>
 
           </Block>

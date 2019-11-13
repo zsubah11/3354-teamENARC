@@ -10,7 +10,7 @@ class DrawerItem extends React.Component {
     const { title, focused } = this.props;
 
     switch (title) {
-      case "Order":
+      case "Buy Passes":
         return (
           <Icon
             name="shop"
@@ -19,7 +19,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.ICON}
           />
         );
-      case "Deliver":
+      case "":
         return (
           <Icon
             name="spaceship"
@@ -28,7 +28,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.ICON}
           />
         );
-      case "Elements":
+      case "Maps":
         return (
           <Icon
             name="map-big"
@@ -46,7 +46,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.ICON}
           />
         );
-      case "Discover":
+      case "Routes":
         return (
           <Icon
             name="menu-8"

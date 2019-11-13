@@ -1,19 +1,13 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
-import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 import { Feather } from '@expo/vector-icons';
 import { argonTheme } from '../constants';
-import { AntDesign } from '@expo/vector-icons';
-import Button from "./Button";
-const { height, width } = Dimensions.get('screen');
+const { height,width } = Dimensions.get('screen');
 
 class ProductListCard extends React.Component {
-
-    state = {
-        numberToAdd: 1,
-    }
     render() {
         const { navigation, item, horizontal, full, style, ctaColor, imageStyle } = this.props;
 
@@ -30,36 +24,8 @@ class ProductListCard extends React.Component {
         return (
             <Block row={horizontal} card flex style={cardContainer}>
                 <TouchableWithoutFeedback onPress={this.props.onPressX}>
-                    <Block flex space="between" style={styles.cardDescription}>
-
-                        <Block>
-                            <Text bold size={14} style={styles.cardTitle, { alignSelf: 'center' }}>{item.title}</Text>
-                            <Block style={{ flexDirection: 'row', alignSelf: 'center' }}>
-                                <Text bold size={18} style={{ color: 'green', alignSelf: 'center' }}>{item.price}</Text>
-                            </Block>
-                        </Block>
-
-                        <Block style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginVertical: height * 0.01 }}>
-                            <Button color="primary" style={{ width: width * 0.4 }} onPress={() => {
-                                this.props.navigation.navigate("Cart");
-                            }}>
-                                <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                                    View QR Code
-                                                </Text>
-                            </Button>
-
-                        </Block>
-                        <Block style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                            <Button color="primary" style={{ width: width * 0.4 }} onPress={() => {
-                                this.props.navigation.navigate("Cart");
-                            }}>
-                                <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                                    Cancel Pass
-                                                </Text>
-                            </Button>
-
-                        </Block>
-
+                    <Block flex style={styles.cardDescription, {justifyContent: 'center', alignItems: 'center'}}>
+                        <Text bold color={argonTheme.COLORS.DEFAULT} size={18} style={styles.cardTitle, {alignSelf: 'center'}}>{item.title}</Text>
                     </Block>
                 </TouchableWithoutFeedback>
             </Block>
@@ -80,7 +46,7 @@ const styles = StyleSheet.create({
         backgroundColor: theme.COLORS.WHITE,
         marginVertical: 0,
         borderWidth: 0,
-        minHeight: 114,
+        minHeight: height*0.08,
         marginBottom: 16
     },
     cardTitle: {

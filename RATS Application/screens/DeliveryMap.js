@@ -100,58 +100,7 @@ class DeliveryMap extends React.Component {
                         </MapView>
 
 
-                        <ScrollView
-                            showsVerticalScrollIndicator={false}
-                            contentContainerStyle={styles.articles}>
-
-                            <Block style={{ marginBottom: height * 0.01, borderColor: argonTheme.COLORS.BORDER_COLOR, borderBottomWidth: 1 }}>
-                                <Text center color={argonTheme.COLORS.ACTIVE} size={16} bold style={{ marginBottom: height * 0.02 }}>{this.state.selectedArticle.title}</Text>
-                            </Block>
-
-                            <Block flex style={{ marginBottom: height * 0.02 }}>
-                                <Block row middle>
-                                    <Text bold color={argonTheme.COLORS.DEFAULT} style={{ marginRight: width * 0.1 }} size={14}>Pack Size</Text>
-                                    <Block style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                        <TouchableOpacity onPress={() => { if (this.state.packSize != 1) { this.setState({ packSize: this.state.packSize - 1 }) } }}>
-                                            <AntDesign name="minus" size={22} color="red" style={{ opacity: 0.5 }} />
-                                        </TouchableOpacity>
-
-                                        <Block style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center', marginHorizontal: 20, borderRadius: 10, borderColor: argonTheme.COLORS.BORDER_COLOR, borderWidth: 1 }}>
-                                            <Text size={14} bold>{this.state.packSize}</Text>
-                                        </Block>
-
-                                        <TouchableOpacity onPress={() => { this.setState({ packSize: this.state.packSize + 1 }) }}>
-                                            <AntDesign name="plus" size={22} color="blue" style={{ opacity: 0.5 }} />
-                                        </TouchableOpacity>
-                                    </Block>
-                                </Block>
-                            </Block>
-
-                            <Block flex>
-                                <FlatList
-                                    data={users}
-                                    renderItem={({ item }) => <MapCard onPressX={() => {
-                                        console.log(item.name + "toggled")
-                                        this.setState({
-                                            activeMarkers: this.state.activeMarkers.push({name: item.name})
-                                        })
-                                    }} item={item} horizontal />}
-                                    keyExtractor={item => item.name}
-                                />
-                            </Block>
-
-                            <Text size={14} style={{ alignSelf: 'center', marginTop: height * 0.02, color: argonTheme.COLORS.DEFAULT }}>By Clicking Deliver, I agree to delivering</Text>
-                            <Text size={14} style={{ alignSelf: 'center', marginBottom: height * 0.02, color: argonTheme.COLORS.DEFAULT }}>the selected items in the next two days</Text>
-
-                            <Button color="primary" style={styles.createButton, { width: width * 0.7, alignSelf: 'center' }} onPress={() => {
-
-                            }}>
-                                <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                                    DELIVER
-                                                </Text>
-                            </Button>
-
-                        </ScrollView>
+                       
 
 
                     </Block>
@@ -178,8 +127,8 @@ const styles = StyleSheet.create({
         paddingVertical: theme.SIZES.BASE,
     },
     mapStyle: {
-        width: width * 0.92,
-        height: height * 0.5,
+        width: width,
+        height: height*0.8,
         borderRadius: 20,
     },
 });

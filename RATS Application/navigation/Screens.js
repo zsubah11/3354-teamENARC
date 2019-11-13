@@ -133,12 +133,6 @@ const OrderStack = createStackNavigator(
         header: <Header title="Your Passes" navigation={navigation} />
         })
     },
-    DeliveryMap: {
-      screen: DeliveryMap,
-      navigationOptions: ({ navigation }) => ({
-        header: <Header title="Deliver" navigation={navigation} />
-      })
-    },
   },
   {
     cardStyle: {
@@ -156,6 +150,12 @@ const DeliveryStack = createStackNavigator(
         header: <Header title="Maps" navigation={navigation} />
       })
     },
+    MapView: {
+      screen: DeliveryMap,
+      navigationOptions: ({ navigation }) => ({
+        header: <Header title="Maps" navigation={navigation} />
+      })
+    }
   },
   {
     cardStyle: {
@@ -171,7 +171,7 @@ const AppStack = createDrawerNavigator(
       screen: DashboardStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Dashboard" title="Discover" />
+          <DrawerItem focused={focused} screen="Dashboard" title="Buy Passes" />
         )
       })
     },
@@ -179,7 +179,7 @@ const AppStack = createDrawerNavigator(
       screen: OrderStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} title="Order" />
+          <DrawerItem focused={focused} title="Routes" />
         )
       })
     },
@@ -187,7 +187,7 @@ const AppStack = createDrawerNavigator(
       screen: DeliveryStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Home" title="Deliver" />
+          <DrawerItem focused={focused} screen="Home" title="Maps" />
         )
       })
     },
