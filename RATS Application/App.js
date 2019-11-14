@@ -9,6 +9,8 @@ import LoginScreens from './navigation/LoginScreens';
 import MainNavigator from './navigation/MainNavigator'
 import { Images, articles, argonTheme } from './constants';
 
+console.disableYellowBox=true;
+
 // cache app images
 const assetImages = [
   Images.Onboarding,

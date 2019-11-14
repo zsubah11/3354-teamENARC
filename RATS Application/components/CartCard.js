@@ -8,14 +8,20 @@ import { argonTheme } from '../constants';
 import { AntDesign } from '@expo/vector-icons';
 import Button from "./Button";
 const { height, width } = Dimensions.get('screen');
+import * as SecureStore from 'expo-secure-store';
 
 class ProductListCard extends React.Component {
 
+    async getCart() {
+        this.setState({ cartValue: JSON.parse(await SecureStore.getItemAsync('cart')) });
+    }
+
     state = {
         numberToAdd: 1,
+        cartValue: []
     }
     render() {
-        const { navigation, item, horizontal, full, style, ctaColor, imageStyle } = this.props;
+        const { navigation, item, horizontal, full, style, ctaColor, imageStyle, index } = this.props;
 
         const imageStyles = [
             full ? styles.fullImage : styles.horizontalImage,
@@ -29,6 +35,9 @@ class ProductListCard extends React.Component {
 
         return (
             <Block row={horizontal} card flex style={cardContainer}>
+                <Block flex style={imgContainer}>
+                    <Image source={{ uri: item.image }} style={{height: "100%", width: "100%"}} />
+                </Block>
                 <TouchableWithoutFeedback onPress={this.props.onPressX}>
                     <Block flex space="between" style={styles.cardDescription}>
 
@@ -41,7 +50,7 @@ class ProductListCard extends React.Component {
 
                         <Block style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginVertical: height * 0.01 }}>
                             <Button color="primary" style={{ width: width * 0.4 }} onPress={() => {
-                                this.props.navigation.navigate("Cart");
+                                this.props.navigation.navigate("QRCode");
                             }}>
                                 <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                                     View QR Code
@@ -50,7 +59,12 @@ class ProductListCard extends React.Component {
 
                         </Block>
                         <Block style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                            <Button color="primary" style={{ width: width * 0.4 }} onPress={() => {
+                            <Button color="primary" style={{ width: width * 0.4 }} onPress={async () => {
+                                console.log(index);
+                                await this.getCart();
+                                this.state.cartValue.splice(index, 1);
+                                console.log(this.state.cartValue);
+                                SecureStore.setItemAsync("cart", JSON.stringify(this.state.cartValue));
                                 this.props.navigation.navigate("Cart");
                             }}>
                                 <Text bold size={14} color={argonTheme.COLORS.WHITE}>

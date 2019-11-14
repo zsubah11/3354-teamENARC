@@ -13,8 +13,9 @@ import { EvilIcons } from '@expo/vector-icons';
 //argon
 import { articles, Images, argonTheme } from "../constants";
 import { Card } from "../components";
+import * as SecureStore from 'expo-secure-store';
 
-const { height,width } = Dimensions.get("screen");
+const { height, width } = Dimensions.get("screen");
 
 const thumbMeasure = (width - 48 - 32) / 3;
 const cardWidth = width - theme.SIZES.BASE * 2;
@@ -47,26 +48,28 @@ const categories = [
   },
 ];
 
-// const articles = [
-//   {
-//     title: "Music Album",
-//     description:
-//       "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
-//     image:
-//       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fit=crop&w=840&q=80",
-//     price: "$125"
-//   },
-//   {
-//     title: "Events",
-//     description:
-//       "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
-//     image:
-//       "https://images.unsplash.com/photo-1543747579-795b9c2c3ada?fit=crop&w=840&q=80",
-//     price: "$35"
-//   }
-// ];
+const DefaultCart = [
+  {
+    title: 'Daily Pass',
+    image: 'https://i.ibb.co/JzJQPnk/ticket-png-icon-26-jpg3.png',
+    cta: 'View article',
+    price: '$1.5',
+  },
+  {
+    title: 'Yearly Pass',
+    image: 'https://i.ibb.co/tbWkrhq/ticket-png-icon-26-jpg1.png',
+    cta: 'View article',
+    price: '$128',
+  },
+
+];
 
 class Dashboard extends React.Component {
+
+  constructor(props) {
+    super(props);
+    SecureStore.setItemAsync("cart", JSON.stringify(DefaultCart));
+  }
   renderProduct = (item, index) => {
     const { navigation } = this.props;
 
@@ -130,7 +133,7 @@ class Dashboard extends React.Component {
             borderBottomWidth: 1,
           }}>
             <Text bold color={argonTheme.COLORS.ACTIVE} size={18} style={{ alignSelf: 'center', marginBottom: theme.SIZES.BASE * 4 }}>
-               - Types of Passes -
+              - Types of Passes -
             </Text>
             <ScrollView
               horizontal={true}
@@ -151,13 +154,13 @@ class Dashboard extends React.Component {
             </ScrollView>
           </Block>
 
-          <Block style={{flex:1, flexDirection: 'row', width:width, backgroundColor:  'black'}}>
+          <Block style={{ flex: 1, flexDirection: 'row', width: width, backgroundColor: 'black' }}>
             <Image
               resizeMode="stretch"
-              style={{width: width, height: height*0.3}}
-              source={{ uri: "https://www.hialbarshadubai.com/wp-content/uploads/2014/03/Dubai-Metro.jpg" }}
+              style={{ width: width, height: height * 0.3 }}
+              source={require('../assets/imgs/Dubai-Metro.jpg')}
             />
-          </Block> 
+          </Block>
 
           {/* Categories */}
           {/* <Block style={{ paddingHorizontal: theme.SIZES.BASE, marginVertical: theme.SIZES.BASE }}>
@@ -194,7 +197,7 @@ class Dashboard extends React.Component {
       <Block flex center>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          
+
         >
           {this.renderCards()}
         </ScrollView>

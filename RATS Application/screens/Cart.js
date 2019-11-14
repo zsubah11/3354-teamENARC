@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Dimensions, ScrollView, FlatList } from 'react-native';
 import { Block, theme } from 'galio-framework';
+import * as SecureStore from 'expo-secure-store';
 
 import CartCard from '../components/CartCard'
-import ProductListCard from '../components/ProductListCard'
-import cart from '../constants/cart';
+import ProductListCard from '../components/ProductListCard';
 import Input from "../components/Input"
 import Icon from '../components/Icon';
 import Tabs from '../components/Tabs';
@@ -12,8 +12,23 @@ import Tabs from '../components/Tabs';
 const { height, width } = Dimensions.get('screen');
 
 class Order extends React.Component {
-  state = {
-    searchBoxValue: "",
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchBoxValue: "",
+      cart: [],
+    };
+
+    this.getCart();
+  }
+
+  componentDidUpdate(){
+    this.getCart();
+  }
+
+  async getCart(){
+    this.setState({cart: JSON.parse(await SecureStore.getItemAsync('cart'))});
   }
   renderArticles = () => {
     return (
@@ -24,7 +39,6 @@ class Order extends React.Component {
           style={styles.search}
           placeholder="What are you looking for?"
           placeholderTextColor={'#8898AA'}
-          onFocus={() => { }}
           onChangeText={(text) => { this.state.searchBoxValue = text }}
           iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
         />
@@ -33,11 +47,11 @@ class Order extends React.Component {
           contentContainerStyle={styles.articles}>
           <Block flex>
             <FlatList
-              data={cart}
-              renderItem={({ item }) => <CartCard onPressX={() => {
-                
-              }} item={item} horizontal />}
-              keyExtractor={item => item.title}
+              data={this.state.cart}
+              renderItem={({ item,index }) => <CartCard onPressX={() => {
+
+              }} item={item} index={index} horizontal />}
+              keyExtractor={({item,index})=>index}
             />
           </Block>
         </ScrollView>

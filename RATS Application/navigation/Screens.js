@@ -19,6 +19,7 @@ import Profile from "../screens/Profile";
 import Elements from "../screens/Elements";
 import Dashboard from "../screens/Dashboard";
 import DeliveryMap from "../screens/DeliveryMap";
+import QRCode from "../screens/QRCode";
 // drawer
 import Menu from "./Menu";
 import DrawerItem from "../components/DrawerItem";
@@ -131,6 +132,12 @@ const OrderStack = createStackNavigator(
       screen: Cart,
       navigationOptions: ({ navigation }) => ({
         header: <Header title="Your Passes" navigation={navigation} />
+        })
+    },
+    QRCode: {
+      screen: QRCode,
+      navigationOptions: ({ navigation }) => ({
+        header: <Header title="QR Code" navigation={navigation} />
         })
     },
   },

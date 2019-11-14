@@ -59,21 +59,6 @@ class DeliveryMap extends React.Component {
     };
 
 
-    renderMarkers = () => {
-        console.log(this.state.activeMarkers);
-        return (
-            this.state.markers.map(marker => (
-                <Marker
-                    coordinate={marker.latlng}
-                    title={marker.title}
-                    description={marker.description}
-                />
-            ))
-
-            
-        );
-    }
-
     renderArticles = () => {
         return (
             <Block>
@@ -96,7 +81,6 @@ class DeliveryMap extends React.Component {
                                     title={"Your Location"}
                                 /> : null
                             } */}
-                            {this.renderMarkers()}
                         </MapView>
 
 
@@ -128,7 +112,7 @@ const styles = StyleSheet.create({
     },
     mapStyle: {
         width: width,
-        height: height*0.8,
+        height: height*0.9,
         borderRadius: 20,
     },
 });
