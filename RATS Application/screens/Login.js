@@ -13,6 +13,7 @@ import { Block, Checkbox, Text, theme } from "galio-framework";
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
 import { Header } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -92,7 +93,13 @@ class Register extends React.Component {
                                             <Button color="primary" style={styles.createButton} onPress={() => {
                                                 //AsyncStorage.setItem('loginToken', "12345");
                                                 this.setState({isLoggedIn:true});
-                                                this.props.navigation.navigate("MainApplication");
+                                                this.props.navigation.dispatch(
+                                                    StackActions.reset({
+                                                        index: 0,
+                                                        key: null,
+                                                        actions: [NavigationActions.navigate({ routeName: "MainApplication" })]
+                                                    })
+                                                )
                                             }}>
                                                 <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                                                     LOGIN

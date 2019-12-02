@@ -28,8 +28,10 @@ class Order extends React.Component {
   }
 
   async getCart(){
-    this.setState({cart: JSON.parse(await SecureStore.getItemAsync('cart'))});
+    await this.setState({cart: JSON.parse(await SecureStore.getItemAsync('cart'))});
+    return;
   }
+
   renderArticles = () => {
     return (
       <Block>
@@ -71,6 +73,7 @@ class Order extends React.Component {
   }
 
   render() {
+    //console.log(this.state.cart);
     if (this.state.searchBoxValue == "" || this.state.searchBoxValue == null) {
       return (
         <Block flex center style={styles.home}>

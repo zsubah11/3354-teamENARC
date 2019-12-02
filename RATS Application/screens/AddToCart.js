@@ -83,18 +83,8 @@ class AddToCart extends React.Component {
                   <Text bold size={18} style={{ alignSelf: 'center', marginBottom: height * 0.02, color: argonTheme.COLORS.ACTIVE }}>${(this.state.selectedArticle.price * this.state.numberToAdd * 1.0825 + 0.25).toFixed(2)}</Text>
                 </Block>
 
-                <Button color="primary" style={styles.createButton, { width: width * 0.7, marginBottom: height * 0.02 }} onPress={async() => {
-                  await this.getCart();
-                  for (var i = 1; i <= this.state.numberToAdd; i++) {
-                    this.state.cart.push({
-                      title: this.state.selectedArticle.title,
-                      image: this.state.selectedArticle.image,
-                      cta: 'View article',
-                      price: "$"+this.state.selectedArticle.price,
-                    })
-                  }
-                  SecureStore.setItemAsync('cart',JSON.stringify(this.state.cart));
-                  this.props.navigation.navigate("Cart");
+                <Button color="primary" style={styles.createButton, { width: width * 0.7, marginBottom: height * 0.02 }} onPress={()=>{
+                  this.props.navigation.navigate("Payment",{selectedArticle: this.state.selectedArticle,numberToAdd: this.state.numberToAdd});
                 }}>
                   <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                     Buy

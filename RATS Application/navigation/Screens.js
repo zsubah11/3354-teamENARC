@@ -20,6 +20,7 @@ import Elements from "../screens/Elements";
 import Dashboard from "../screens/Dashboard";
 import DeliveryMap from "../screens/DeliveryMap";
 import QRCode from "../screens/QRCode";
+import Payment from "../screens/Payment"
 // drawer
 import Menu from "./Menu";
 import DrawerItem from "../components/DrawerItem";
@@ -72,7 +73,7 @@ const ElementsStack = createStackNavigator({
       header: <Header title="Elements" navigation={navigation} />
     })
   }
-},{
+}, {
   cardStyle: {
     backgroundColor: "#F8F9FE"
   },
@@ -85,8 +86,37 @@ const DashboardStack = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       header: <Header title="Home" navigation={navigation} />
     })
-  }
-},{
+  }, AddToCart: {
+    screen: AddToCart,
+    navigationOptions: ({ navigation }) => ({
+      header: (
+        <Header left={<Block />} white transparent title="" navigation={navigation} />
+      ),
+      headerTransparent: true
+    })
+  },
+  Payment: {
+    screen: Payment,
+    navigationOptions: ({ navigation }) => ({
+      header: (
+        <Header white transparent title="Payment" iconColor={'#FFF'} navigation={navigation} />
+      ),
+      headerTransparent: true
+    })
+  },
+  Cart: {
+    screen: Cart,
+    navigationOptions: ({ navigation }) => ({
+      header: <Header title="Your Passes" navigation={navigation} />
+    })
+  },
+  QRCode: {
+    screen: QRCode,
+    navigationOptions: ({ navigation }) => ({
+      header: <Header title="QR Code" navigation={navigation} />
+    })
+  },
+}, {
   cardStyle: {
     backgroundColor: "#F8F9FE"
   },
@@ -116,29 +146,8 @@ const OrderStack = createStackNavigator(
     Order1: {
       screen: Order,
       navigationOptions: ({ navigation }) => ({
-      header: <Header title="Routes" navigation={navigation} />
+        header: <Header title="Routes" navigation={navigation} />
       })
-    },
-    AddToCart: { 
-      screen: AddToCart,
-      navigationOptions: ({ navigation }) => ({
-        header: (
-          <Header left={<Block />} white transparent title="" navigation={navigation} />
-        ),
-        headerTransparent: true
-      })
-    },
-    Cart: {
-      screen: Cart,
-      navigationOptions: ({ navigation }) => ({
-        header: <Header title="Your Passes" navigation={navigation} />
-        })
-    },
-    QRCode: {
-      screen: QRCode,
-      navigationOptions: ({ navigation }) => ({
-        header: <Header title="QR Code" navigation={navigation} />
-        })
     },
   },
   {
